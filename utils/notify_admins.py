@@ -1,5 +1,5 @@
 import logging
-
+from aiogram.types import ReplyKeyboardRemove
 from aiogram import Dispatcher
 
 from data.config import ADMINS
@@ -8,7 +8,7 @@ from data.config import ADMINS
 async def on_startup_notify(dp: Dispatcher):
     for admin in ADMINS:
         try:
-            await dp.bot.send_message(admin, "Бот Запущен")
+            await dp.bot.send_message(admin, "Бот Запущен", reply_markup=ReplyKeyboardRemove())
 
         except Exception as err:
             logging.exception(err)
